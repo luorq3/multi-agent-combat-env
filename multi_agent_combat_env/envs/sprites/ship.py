@@ -22,5 +22,14 @@ class Ship(SpriteBase, Movable):
         missile = ShipMissile(self.screen_size, Rect(*self.get_center_coord(), *ship_missile_size))
         self.missile_group.add(missile)
 
+    # def handle(self, action):
+    #     reward = 0
+        # if action in [1, 2, 3, 4]:
+        #     self.move(action)
+        # if action == 5:
+        #     self.fire()
+        #
+        # return 0
+
 
 # s = Ship(pygame.surface.Surface((10, 10)), (50, 50), (10, 10), (0, 0))

@@ -33,3 +33,6 @@ class Fort(SpriteBase):
         self.radian = math.atan2(offset_x, offset_y)
 
         self.angle = self.radian * 180 / math.pi
+
+    def turn(self, action):
+        pass
