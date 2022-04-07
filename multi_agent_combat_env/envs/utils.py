@@ -16,34 +16,11 @@ ship_missile_size = (5, 8)
 fort_missile_size = (5, 8)
 
 # 防守方的陆地为一个半圆，半径为224
-beach_rect = (224, 0, 448, 224)
+beach_rect = Rect(224, 0, 448, 224)
 # 放置炮台的半圆，处于防守方陆地内，比陆地略小的同心圆，半径为210
-fort_beach_rect = Rect(238, 0, 420, 210)
-
-
-"""
-(x - 448)^2 + y^2 = 210^2
-from x to y
-"""
-def get_y_by_x(x):
-    y = math.sqrt(210**2 - (x - 448)**2)
-    return int(y)
-
-
-def get_center_rect(rect):
-    """
-    surface 的坐标(0,0)位于右上角，在发射或瞄准时需要调整至surface中央
-    """
-    return [i + j / 2 for i, j in zip(rect[:2], rect[2:])]
-
-
-def pixel_collision2(rect1: Rect,
-                     rect2: Rect):
-    rect = rect1.clip(rect2)
-    if rect.width == 0 or rect.height == 0:
-        return False
-
-    return True
+fort_beach_rect = Rect(248, 0, 400, 200)
+# 舰艇初始化时，处于屏幕的下方，x方向均匀排列，y方向坐标=790
+ship_init_rect = Rect(0, 790, 40, 99)
 
 
 def pixel_collision(rect1: Rect,
