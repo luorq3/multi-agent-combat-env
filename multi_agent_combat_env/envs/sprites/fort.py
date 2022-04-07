@@ -13,8 +13,7 @@ class Fort(SpriteBase):
                  screen_size: Tuple[int, int],
                  rect: Rect,
                  hp: int = 5):
-        super(Fort, self).__init__(screen_size, rect)
-        self.hp = hp
+        super(Fort, self).__init__(screen_size, rect, hp)
         self.angle = 0
         self.radian = 0
         self.missile_group = pygame.sprite.Group()

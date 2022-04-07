@@ -48,9 +48,6 @@ class FightRenderer:
         self.surface.blit(pygame.transform.rotate(self.images['fort'], self.game.fort.angle),
                           self.game.fort.rect[:2])
 
-        self.game.ship.missile_group.update()
-        self.game.fort.missile_group.update()
-
         for missile in self.game.ship.missile_group:
             self.surface.blit(self.images['ship_missile'], missile.rect[:2])
 

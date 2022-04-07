@@ -8,10 +8,12 @@ class SpriteBase(pygame.sprite.Sprite):
 
     def __init__(self,
                  screen_size: Tuple[int, int],
-                 rect: Rect):
+                 rect: Rect,
+                 hp: int):
         super(SpriteBase, self).__init__()
         self.screen_size = screen_size
         self.rect = rect
+        self.hp = hp
         self.center = [0, 0]
         size = (self.rect.width, self.rect.height)
         self.max_rect = [screen - size for screen, size in zip(self.screen_size, size)]

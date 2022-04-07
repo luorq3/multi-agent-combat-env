@@ -13,9 +13,8 @@ class Ship(SpriteBase, Movable):
                  rect: Rect,
                  speed: int = 10,
                  hp: int = 5):
-        SpriteBase.__init__(self, screen_size, rect)
+        SpriteBase.__init__(self, screen_size, rect, hp)
         Movable.__init__(self, self, speed)
-        self.hp = hp
         self.missile_group = pygame.sprite.Group()
 
     def fire(self):
