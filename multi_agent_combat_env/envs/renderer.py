@@ -44,15 +44,17 @@ class FightRenderer:
 
         pygame.draw.circle(self.surface, (233, 150, 122), (self._screen_width / 2, 0), 224)
 
-        self.surface.blit(self.images['ship'], self.game.ship.rect[:2])
-        self.surface.blit(pygame.transform.rotate(self.images['fort'], self.game.fort.angle),
-                          self.game.fort.rect[:2])
+        for ship in self.game.ship_group.sprites():
+            self.surface.blit(self.images['ship'], ship.rect[:2])
+        for fort in self.game.fort_group.sprites():
+            self.surface.blit(pygame.transform.rotate(self.images['fort'], fort.angle),
+                              fort.rect[:2])
 
-        for missile in self.game.ship.missile_group:
+        for missile in self.game.ship_missile_group.sprites():
             self.surface.blit(self.images['ship_missile'], missile.rect[:2])
 
-        for missile in self.game.fort.missile_group:
-            self.surface.blit(pygame.transform.rotate(self.images['fort_missile'], self.game.fort.angle),
+        for missile in self.game.fort_missile_group.sprites():
+            self.surface.blit(pygame.transform.rotate(self.images['fort_missile'], missile.angle),
                               missile.rect[:2])
 
     def update_display(self):

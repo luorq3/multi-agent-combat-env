@@ -24,7 +24,7 @@ class Fort(SpriteBase):
         missile = FortMissile(
             self.screen_size,
             Rect(*self.get_center_coord(), *fort_missile_size),
-            self.radian)
+            self.radian, self.angle)
         self.missile_group.add(missile)
 
     def update(self, target_x, target_y, *args: Any, **kwargs: Any) -> None:
@@ -33,7 +33,7 @@ class Fort(SpriteBase):
 
         self.radian = math.atan2(offset_x, offset_y)
 
-        self.angle = self.radian * 180 / math.pi
+        self.angle = int(self.radian * 180 / math.pi)
 
     def turn(self, action):
         pass

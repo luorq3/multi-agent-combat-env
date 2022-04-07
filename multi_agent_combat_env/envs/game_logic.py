@@ -38,7 +38,7 @@ def _ship_init_position(nums):
 
 class GameLogic:
 
-    def __init__(self, images, screen_size: Tuple[int, int], ship_num=2, fort_num=2):
+    def __init__(self, images, screen_size: Tuple[int, int], ship_num=1, fort_num=1):
         self._screen_size = screen_size
 
         # Sprite group
