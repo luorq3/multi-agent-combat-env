@@ -12,12 +12,13 @@ class Fort(SpriteBase):
     def __init__(self,
                  screen_size: Tuple[int, int],
                  rect: Rect,
+                 missile_group: pygame.sprite.Group,
                  hp: int = 5):
         super(Fort, self).__init__(screen_size, rect)
         self.hp = hp
         self.angle = 0
         self.radian = 0
-        self.missile_group = pygame.sprite.Group()
+        self.missile_group = missile_group
 
     def fire(self):
         missile = FortMissile(
