@@ -9,13 +9,13 @@ from multi_agent_combat_env.envs.game_logic import GameLogic
 from multi_agent_combat_env.envs.utils import load_images
 
 
-class FightEnvRGB(gym.Env):
+class MultiAgentCombatEnvRGB(gym.Env):
 
     metadata = {"render.modes": ["human", "rgb_array"]}
 
     def __init__(self,
                  screen_size: Tuple[int, int] = (896, 896)):
-        super(FightEnvRGB, self).__init__()
+        super(MultiAgentCombatEnvRGB, self).__init__()
         self.action_space = gym.spaces.Discrete(6)
         self.observation_space = gym.spaces.Box(0, 255, [*screen_size, 3], dtype=np.uint8)
 
@@ -44,7 +44,7 @@ class FightEnvRGB(gym.Env):
         return obs, rewards, done, info
 
     def render(self, mode="human") -> Optional[np.ndarray]:
-        if mode not in FightEnvRGB.metadata['render.modes']:
+        if mode not in MultiAgentCombatEnvRGB.metadata['render.modes']:
             raise ValueError("Invalid render mode!")
 
         self._renderer.draw_surface()

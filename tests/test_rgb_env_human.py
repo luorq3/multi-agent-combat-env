@@ -12,36 +12,42 @@ from PIL import Image
 # Action={0:NOOP, 1:UP, 2:DOWN, 3:LEFT, 4:RIGHT, 5:FIRE}
 def play_with_render(env: gym.Env):
     clock = pygame.time.Clock()
-    score = 0
+    score = np.zeros(2)
 
     obs = env.reset()
     while True:
         env.render()
 
+        actions = [0] * 2
         # Getting action
-        action = 0
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_UP:
-                    action = 1
+                    actions[0] = 1
                 elif event.key == pygame.K_DOWN:
-                    action = 2
+                    actions[0] = 2
                 elif event.key == pygame.K_LEFT:
-                    action = 3
+                    actions[0] = 3
                 elif event.key == pygame.K_RIGHT:
-                    action = 4
-                elif event.key == pygame.K_a or event.key == pygame.K_SPACE:
-                    action = 5
+                    actions[0] = 4
+                elif event.key == pygame.K_SPACE:
+                    actions[0] = 5
+                elif event.key == pygame.K_a:
+                    actions[1] = 1
+                elif event.key == pygame.K_d:
+                    actions[1] = 2
+                elif event.key == pygame.K_s:
+                    actions[1] = 3
 
-        # Processing
-        obs, reward, done, info = env.step(action)
+            # Processing
+        obs, reward, done, info = env.step(actions)
 
         score += reward
         # print(f"Obs shape: {obs.shape}")
-        print(f"Score: {score}\n")
+        print("Score: {}".format(score))
 
         clock.tick(30)
 
@@ -64,14 +70,14 @@ def visualize_obs(env, greyscale: bool):
 
 
 if __name__ == "__main__":
-    fight_env = multi_agent_combat_env.make("Fight-rgb-v0")
+    mac_env = multi_agent_combat_env.make("MultiAgentCombat-rgb-v0")
 
-    print(f"Action space: {fight_env.action_space}")
-    print(f"Observation space: {fight_env.observation_space}")
+    print(f"Action space: {mac_env.action_space}")
+    print(f"Observation space: {mac_env.observation_space}")
 
     # visualize_obs(fight_env, greyscale=False)
     # visualize_obs(fight_env, greyscale=True)
 
-    play_with_render(env=fight_env)
+    play_with_render(env=mac_env)
 
-    fight_env.close()
+    mac_env.close()
