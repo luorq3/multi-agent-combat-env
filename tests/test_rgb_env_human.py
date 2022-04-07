@@ -18,7 +18,7 @@ def play_with_render(env: gym.Env):
     while True:
         env.render()
 
-        actions = [0] * 2
+        actions = [[0, 0]] * 2
         # Getting action
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -26,21 +26,21 @@ def play_with_render(env: gym.Env):
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_UP:
-                    actions[0] = 1
+                    actions[0][0] = 1
                 elif event.key == pygame.K_DOWN:
-                    actions[0] = 2
+                    actions[0][0] = 2
                 elif event.key == pygame.K_LEFT:
-                    actions[0] = 3
+                    actions[0][0] = 3
                 elif event.key == pygame.K_RIGHT:
-                    actions[0] = 4
+                    actions[0][0] = 4
                 elif event.key == pygame.K_SPACE:
-                    actions[0] = 5
-                elif event.key == pygame.K_a:
-                    actions[1] = 1
-                elif event.key == pygame.K_d:
-                    actions[1] = 2
-                elif event.key == pygame.K_s:
-                    actions[1] = 3
+                    actions[0][0] = 5
+                elif event.key == pygame.K_z:
+                    actions[1][0] = 1
+                elif event.key == pygame.K_c:
+                    actions[1][0] = 2
+                elif event.key == pygame.K_x:
+                    actions[1][0] = 3
 
             # Processing
         obs, reward, done, info = env.step(actions)

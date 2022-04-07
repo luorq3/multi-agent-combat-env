@@ -35,5 +35,6 @@ class Fort(SpriteBase):
 
         self.angle = int(self.radian * 180 / math.pi)
 
+    # TODO: turn direction logic
     def turn(self, action):
         pass
