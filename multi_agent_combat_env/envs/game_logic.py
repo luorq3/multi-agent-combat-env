@@ -146,7 +146,7 @@ class GameLogic:
             for missile in fort_missiles:
                 if not missile.alive():
                     continue
-                collided = pixel_collision(ship.rect, missile.rect, self.fort_mask, self.ship_missile_mask)
+                collided = pixel_collision(ship.rect, missile.rect, self.ship_mask, self.fort_missile_mask)
                 if collided:
                     missile.kill()
                     ship.hp -= 1
