@@ -13,12 +13,14 @@ class Fort(SpriteBase):
                  screen_size: Tuple[int, int],
                  rect: Rect,
                  missile_group: pygame.sprite.Group,
-                 hp: int = 5):
+                 hp: int = 5,
+                 turn_speed: int = 5):
         super(Fort, self).__init__(screen_size, rect)
         self.hp = hp
         self.angle = 0
         self.radian = 0
         self.missile_group = missile_group
+        self.turn_speed = turn_speed
 
     def fire(self):
         missile = FortMissile(
@@ -35,6 +37,10 @@ class Fort(SpriteBase):
 
         self.angle = int(self.radian * 180 / math.pi)
 
-    # TODO: turn direction logic
     def turn(self, action):
-        pass
+        if action == 1:
+            self.angle -= self.turn_speed
+        elif action == 2:
+            self.angle += self.turn_speed
+
+        self.radian = self.angle * math.pi / 180
